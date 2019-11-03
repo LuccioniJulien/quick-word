@@ -3,9 +3,10 @@ import fs from "fs";
 import path from "path";
 
 function serverHandler(req: IncomingMessage, res: ServerResponse): void {
-  const indexPath = path.join(__dirname, "view", "index.html");
+  const indexPath = path.join(path.resolve(__dirname), "view", "index.html");
   fs.readFile(indexPath, (err, data) => {
     if (err) {
+      console.log(err);
       res.writeHead(500);
       res.end("internal error");
       return;

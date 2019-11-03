@@ -7,7 +7,7 @@
     "start": "node ./build/index.js",
     "dev": "nodemon",
     "build": "rimraf build && tsc && npm run html",
-    "html": "copyfiles -u 1 src/view/*.html build/"
+    "html": "copyfiles -u 1 src/server/view/*.html build/"
   },
   "keywords": [],
   "author": "",
