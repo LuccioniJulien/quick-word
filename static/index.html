@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <title>Quick word</title>
+  </head>
+  <body>
+    <div class="middle">
+      <!-- nickname -->
+      <div id="nicknameForm">
+        <div class="field">
+          <input
+            id="nicknameInput"
+            class="input is-info input-width"
+            type="text"
+            placeholder="Nickname"
+          />
+        </div>
+        <div class="field">
+          <button id="nicknameButton" class="button is-info">go</button>
+        </div>
+      </div>
+      <!-- end nickname -->
+      <!-- waiting -->
+      <div id="waiting" class="hide">
+        <p class="subtitle is-3">Waiting for another player</p>
+      </div>
+      <!-- end waiting -->
+      <!-- game -->
+      <div id="game" class="hide">
+        <h1 id="versus" class="title is-1"></h1>
+        <p class="subtitle is-3">
+          <p>A word will appear, type it as fast as possible.</p>
+          <p>The fastest player wins !</p>
+        </p>
+        <p class="subtitle is-3">The game will start in 5 seconds...</p>
+      </div>
+      <!-- end game -->
+    </div>
+  </body>
+  <script
+    type="application/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+  ></script>
+  <script type="application/javascript" src="index.js"></script>
+</html>
