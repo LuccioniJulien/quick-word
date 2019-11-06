@@ -11,6 +11,9 @@ export default class RoomManager {
     return room;
   }
 
+  delete(uuid: string) {
+    this.rooms = this.rooms.filter(r => r.id !== uuid);
+  }
   // remove player from the room
   remove(id: string) {
     const room = this.rooms.find(r => r.contain(id));
@@ -44,6 +47,7 @@ class Room {
   players: Array<Player> = [];
   count: number = 0;
   id: string = "";
+  isGameFinished: boolean = false;
 
   // set the id of the room which will be used as name for room in socket.io
   constructor() {

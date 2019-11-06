@@ -36,14 +36,38 @@
       <!-- end waiting -->
       <!-- game -->
       <div id="game" class="hide">
-        <h1 id="versus" class="title is-1"></h1>
+        <div id="names" class="title is-1 rumble"></div>
         <p class="subtitle is-3">
           <p>A word will appear, type it as fast as possible.</p>
           <p>The fastest player wins !</p>
+          <p>The game will start in <label id="seconds">7</label> seconds...</p>
         </p>
-        <p class="subtitle is-3">The game will start in 5 seconds...</p>
       </div>
       <!-- end game -->
+      <!-- word -->
+      <div id="word" class="hide">
+        <div id="names" class="title is-1">
+          <p id="wordToType"></p>
+            <input
+            id="wordInput"
+            class="input is-info input-width"
+            type="text"
+            placeholder=""
+            onkeyup="onInputChange(value)"
+          />
+        </div>
+      </div>
+      <!-- end word -->
+      <!-- win -->
+      <div id="win" class="hide">
+          <div class="field">
+            <h1 id="winner" class="title is-1"></h1>
+          </div>
+          <div class="field">
+              <button id="playAgain" class="button is-info">Play Again</button>
+          </div>
+      </div>
+      <!-- end win -->
     </div>
   </body>
   <script
