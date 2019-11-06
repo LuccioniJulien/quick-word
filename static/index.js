@@ -1,6 +1,7 @@
 var socket = io();
 var yourNickname = "";
 var theWord = "";
+var refInterval;
 
 document
   .getElementById("nicknameButton")
@@ -35,19 +36,20 @@ socket.on("finish", finishHandler);
 
 function finishHandler(winner) {
   const message = yourNickname === winner ? "You win !!" : "You lose !";
-  document.getElementById("wordInput").value = "";
-  document.getElementById("seconds").textContent = "7";
+  resetUI();
   document.getElementById("winner").textContent = message;
   setUI("win");
 }
 
 function gameBeginHandler({ players, word }) {
+  resetUI();
   setUI("game");
   setNameVersus(players);
   let i = 7;
-  const refInterval = setInterval(() => {
+  refInterval = setInterval(() => {
     if (i == 0) {
       clearInterval(refInterval);
+      refInterval = null;
       setWord(word);
       return;
     }
@@ -56,7 +58,16 @@ function gameBeginHandler({ players, word }) {
 }
 
 function cancelHandler() {
+  resetUI();
   setUI("waiting");
+}
+
+function resetUI() {
+  if (refInterval) {
+    clearInterval(refInterval);
+  }
+  document.getElementById("wordInput").value = "";
+  document.getElementById("seconds").textContent = "7";
 }
 
 function setWord(word) {
