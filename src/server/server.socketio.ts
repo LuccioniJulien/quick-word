@@ -1,7 +1,7 @@
-import socketio, { Socket, Room } from "socket.io";
+import socketio, { Socket } from "socket.io";
 import RoomManager from "../lib/roomManager";
-import { info, warning } from "../lib";
-var randomWords = require("random-words");
+import { info } from "../lib";
+const randomWords = require("random-words");
 
 const io = socketio();
 const manager = new RoomManager();
@@ -12,7 +12,7 @@ function socketConnectionHandler(socket: Socket) {
   info(`${socket.id} has join the server`);
 
   handleNickname(socket);
-  handleWin(socket)
+  handleWin(socket);
 
   socket.on("disconnect", () => handleDisconnect(socket));
 }
@@ -26,7 +26,7 @@ function handleNickname(socket: Socket) {
     socket.join(roomName);
 
     // fire the start when room is full
-    if (room.count === 2) {
+    if (room.count() === 2) {
       io.to(roomName).emit("begin", {
         players: room.getPlayers(),
         word: randomWords()

@@ -14,6 +14,6 @@
 
 ## Heroku link:
 
-[https://word-socket-game.herokuapp.com/]()
+https://word-socket-game.herokuapp.com/
 
 
